@@ -1,11 +1,6 @@
 package com.jk.service;
 
-import com.jk.model.TreeBean;
-import com.jk.model.UserBean;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * <pre>项目名称：springcloud2

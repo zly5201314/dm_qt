@@ -1,4 +1,4 @@
-package com.jk.model;
+package com.jk.controller;
 
 import com.jk.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

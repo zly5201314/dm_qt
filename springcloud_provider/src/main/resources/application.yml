@@ -20,7 +20,7 @@ eureka:
 mybatis:
   config-locations: classpath:mybatis/confg.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
-  type-aliases-package: com.jk.model
+  type-aliases-package: com.jk.controller
 
 
 

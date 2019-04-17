@@ -1,4 +1,4 @@
-package com.jk.model;
+package com.jk.controller;
 
 import java.io.Serializable;
 
