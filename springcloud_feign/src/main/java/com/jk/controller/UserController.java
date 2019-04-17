@@ -1,4 +1,4 @@
-package com.jk.model;
+package com.jk.controller;
 
 import com.jk.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +29,9 @@ public class UserController {
         return userservice.hiService( name );
     }
 
-
+    @GetMapping(value = "/shouye")
+    public String shouye() {
+        return "shouye";
+    }
 
 }
