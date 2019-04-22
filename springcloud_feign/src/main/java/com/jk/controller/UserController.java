@@ -11,6 +11,12 @@ import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import com.jk.util.HttpClientUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -57,10 +63,6 @@ public class UserController {
     @Autowired
     private SolrClient client;
 
-    @GetMapping(value = "/hi")
-    public String hi(@RequestParam String name) {
-        return userservice.hiService( name );
-    }
 
     @GetMapping(value = "/shouye")
     public String shouye() {
@@ -185,23 +187,23 @@ public class UserController {
     }
 
 
-      //查询房间
-      @GetMapping("/chuan/findCh")
-      public HashMap<String,Object> findCh(Integer page,Integer rows,ChBean chBean){
-          HashMap<String, Object> hashMap =userservice.findCh(page,rows,chBean);
-          System.out.println(hashMap);
-          return hashMap;
-     }
+    //查询房间
+    @GetMapping("/chuan/findCh")
+    public HashMap<String,Object> findCh(Integer page,Integer rows,ChBean chBean){
+        HashMap<String, Object> hashMap =userservice.findCh(page,rows,chBean);
+        System.out.println(hashMap);
+        return hashMap;
+    }
 
-     //预订房间
-      @RequestMapping("/jiu/findJiuById")
-     public ChBean findJiuById(Integer shopId){
-          ChBean chBean=userservice.findJiuById(shopId);
-          System.out.println(chBean);
-          return chBean;
-      }
+    //预订房间
+    @RequestMapping("/jiu/findJiuById")
+    public ChBean findJiuById(Integer shopId){
+        ChBean chBean=userservice.findJiuById(shopId);
+        System.out.println(chBean);
+        return chBean;
+    }
 
-      //立即预订
+    //立即预订
     @RequestMapping("/yu/saveYu")
     public void saveYu(ChBean chBean){
         userservice.saveYu(chBean);
@@ -266,8 +268,6 @@ public class UserController {
         }else {
             params.setRows(rows);
         }
-
-
         //高亮
         //打开开关
         params.setHighlight(true);
@@ -312,7 +312,6 @@ public class UserController {
             user.setProduct_price((long)result.get("product_price"));
             user.setProduct_title(highname);*//*
             userslist.add(user);
-
         }
         mSolr.put("total",numFound);
         mSolr.put("rows",userslist);
@@ -405,5 +404,90 @@ public class UserController {
         System.out.println(mSolr);
         return carList;
     }
+
+
+
+    @GetMapping(value = "/hi")
+    public String hi(@RequestParam String name) {
+        return userservice.hiService( name );
+    }
+
+
+
+    //-------------------------------------------------------------区域查询
+    @GetMapping(value = "queryAreaList")
+    @ResponseBody
+    public List<AreaBean> queryAreaList() {
+        List<AreaBean> areaBeans = userservice.queryAreaList();
+        return areaBeans;
+    }
+
+
+    //--------------------------------------------------------------天数查询
+    @GetMapping(value = "queryNumberDay")
+    @ResponseBody
+    public List<NumberDayBean> queryNumberDay() {
+        List<NumberDayBean> NumberDay = userservice.queryNumberDay();
+        return NumberDay;
+    }
+
+    //--------------------------------------------------------------景点查询
+    @GetMapping(value = "queryNameBean")
+    @ResponseBody
+    public List<NameBean> queryNameBean() {
+        return userservice.queryNameBean();
+    }
+    //--------------------------------------------------------------主题查询
+    @GetMapping(value = "queryZhuTi")
+    @ResponseBody
+    public List<ZhuTiBean> queryZhuTi() {
+        return userservice.queryZhuTi();
+    }
+
+    //--------------------------------------------------------------旅行路线查询
+    @GetMapping(value = "queryBeiJing")
+    @ResponseBody
+    public List<BeiJineBean> queryBeiJing() {
+        List<BeiJineBean> beiJingTrees = userservice.queryBeiJing();
+        return beiJingTrees;
+    }
+    //--------------------------------------------------------------购物车查询
+    @GetMapping(value = "queryGouWu")
+    @ResponseBody
+    public List<YuFuBean> queryGouWu() {
+        List<YuFuBean> gouwu = userservice.queryGouWu();
+        return gouwu;
+    }
+    //--------------------------------------------------------------旅行路线详情查询
+    @GetMapping("openUpdate")
+    @ResponseBody
+    public BeiJineBean findUserBy(@RequestParam("id") Integer id){
+        BeiJineBean beiJingTrees = userservice.findUserById(id);
+
+        return beiJingTrees;
+    }
+    //--------------------------------------------------------------删除购物
+    @DeleteMapping("delGouWu")
+    @ResponseBody
+    public void delGouWu(@RequestParam("id") Integer id){
+            userservice.delGouWu(id);
+    }
+    //-------------------------------------------------------------购物车新增
+    @PostMapping("saveUser")
+    @ResponseBody
+    public Boolean saveUser(@RequestBody YuFuBean userBean){
+        try {
+            userservice.saveUser(userBean);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+
+
+
 
 }

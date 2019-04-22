@@ -9,6 +9,7 @@ import com.jk.controller.ChBean;
 import com.jk.controller.HotelBean;
 import com.jk.controller.Tree;
 import com.jk.controller.User;
+import com.jk.controller.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -29,6 +30,39 @@ public interface UserServiceApi {
 
     @GetMapping(value = "/hi")
     String hiService(@RequestParam(value = "name") String name);
+
+    //区间查询
+    @GetMapping(value = "queryAreaList")
+    @ResponseBody
+    List<AreaBean> queryAreaList();
+
+    @GetMapping(value = "queryNumberDay")
+    @ResponseBody
+    List<NumberDayBean> queryNumberDay();
+
+    //--------------------------------------------------------------景点查询
+    @GetMapping(value = "queryNameBean")
+    @ResponseBody
+    List<NameBean> queryNameBean();
+    //--------------------------------------------------------------主题查询
+    @GetMapping(value = "queryZhuTi")
+    @ResponseBody
+    List<ZhuTiBean> queryZhuTi();
+    @GetMapping(value = "queryBeiJing")
+    @ResponseBody
+    List<BeiJineBean> queryBeiJing();
+    @GetMapping(value = "findUserById")
+    @ResponseBody
+    BeiJineBean findUserById(@RequestParam("id")Integer id);
+    @PostMapping(value = "saveUser")
+    @ResponseBody
+    void saveUser(@RequestBody YuFuBean userBean);
+    @GetMapping(value = "queryGouWu")
+    @ResponseBody
+    List<YuFuBean> queryGouWu();
+    @DeleteMapping(value = "delGouWu")
+    @ResponseBody
+    void delGouWu(@RequestParam("id")Integer id);
 
 
     //查询博客

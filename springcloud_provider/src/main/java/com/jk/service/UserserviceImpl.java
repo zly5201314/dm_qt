@@ -10,10 +10,14 @@ import com.jk.controller.ChBean;
 import com.jk.controller.JinBean;
 import com.jk.controller.JiuBean;
 import com.jk.mapper.UserMapper;
+import com.jk.controller.*;
+import com.jk.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,7 +40,7 @@ public class UserserviceImpl{
 
     @GetMapping(value = "/hi")
     @ResponseBody
-    public String hiService(String name)     {
+    public String hiService(String name) {
         return "hi,"+name+",sorry,error!";
     }
 
@@ -248,6 +252,67 @@ public class UserserviceImpl{
         List<JinBean> list=usermapper.tijiao(jinName);
         return list;
     };
+
+    //区间查询
+    @GetMapping(value = "queryAreaList")
+    @ResponseBody
+    public List<AreaBean> queryAreaList() {
+
+        return usermapper.queryAreaList();
+    }
+
+    //天数查询
+    @GetMapping(value = "queryNumberDay")
+    @ResponseBody
+    public List<NumberDayBean> queryNumberDay() {
+        return usermapper.queryNumberDay();
+    }
+
+    //--------------------------------------------------------------景点查询
+    @GetMapping(value = "queryNameBean")
+    @ResponseBody
+    public List<NameBean> queryNameBean() {
+        return usermapper.queryNameBean();
+    }
+
+    @GetMapping(value = "queryZhuTi")
+    @ResponseBody
+    public List<ZhuTiBean> queryZhuTi() {
+        return usermapper.queryZhuTi();
+    }
+
+    @GetMapping(value = "queryBeiJing")
+    @ResponseBody
+    public List<BeiJineBean> queryBeiJing() {
+
+        return usermapper.queryBeiJing();
+    }
+
+    @GetMapping(value = "queryGouWu")
+    @ResponseBody
+    public List<YuFuBean> queryGouWu() {
+
+        return usermapper.queryGouWu();
+    }
+
+    @DeleteMapping("delGouWu")
+    @ResponseBody
+    public void delGouWu(@RequestParam("id") Integer id) {
+        usermapper.delGouWu(id);
+    }
+    
+    @GetMapping(value = "findUserById")
+    @ResponseBody
+    public BeiJineBean findUserById(@RequestParam("id")Integer id) {
+
+        return usermapper.findUserById(id);
+    }
+
+    @PostMapping("saveUser")
+    @ResponseBody
+    public void saveUser(@RequestBody YuFuBean userBean) {
+        usermapper.saveUser(userBean);
+    }
 
 
 }

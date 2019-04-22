@@ -1,17 +1,11 @@
 package com.jk.mapper;
 
-import com.jk.controller.ChBean;
-import com.jk.controller.HotelBean;
-import com.jk.controller.Tree;
-import com.jk.controller.User;
+import com.jk.controller.*;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.jk.controller.BokeBean;
 import com.jk.controller.ChBean;
-import com.jk.controller.JinBean;
-import com.jk.controller.JiuBean;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -121,4 +115,24 @@ public interface UserMapper {
     //景点条查
     @Select(value = " select * from zly_jinDian where jinName=#{value} ")
     List<JinBean> tijiao(String jinName);
+
+    @Select("select * from t_area")
+    List<AreaBean> queryAreaList();
+    @Select("select * from t_numberday")
+    List<NumberDayBean> queryNumberDay();
+    @Select("select * from t_name")
+    List<NameBean> queryNameBean();
+
+    List<ZhuTiBean> queryZhuTi();
+
+    List<BeiJineBean> queryBeiJing();
+
+    BeiJineBean findUserById(Integer id);
+
+
+    void saveUser(YuFuBean userBean);
+    @Select("select * from t_gouwuche")
+    List<YuFuBean> queryGouWu();
+
+    void delGouWu(Integer id);
 }

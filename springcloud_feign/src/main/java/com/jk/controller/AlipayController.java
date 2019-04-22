@@ -47,7 +47,6 @@ public class AlipayController {
         System.out.println("生成订单号"+orderNo);
         String totalAmount = chBean.getfPrice().toString(); // 支付总金额
         String subject = "酒店房间"; // 订单名称
-        System.out.println("订单名称"+subject);
         String body = chBean.getfName(); // 商品描述
         // 封装请求客户端
         AlipayClient client = new DefaultAlipayClient(url, app_id, private_key, format, charset, public_key, signtype);
@@ -60,6 +59,7 @@ public class AlipayController {
         model.setOutTradeNo(orderNo); // 设置订单号
         model.setSubject(subject); // 订单名称
         model.setTotalAmount(totalAmount); // 支付总金额
+        model.setTotalAmount(String.valueOf(totalAmount)); // 支付总金额
         model.setBody(body); // 设置商品描述
         alipayRequest.setBizModel(model);
 
@@ -102,6 +102,7 @@ public class AlipayController {
             System.out.println("前往支付失败页面");
             mav.setViewName("hotel");
             mav.setViewName("index");
+            mav.setViewName("luxian");
         }
         return mav;
     }

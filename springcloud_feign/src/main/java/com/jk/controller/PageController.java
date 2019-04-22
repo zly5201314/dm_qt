@@ -2,6 +2,7 @@
 package com.jk.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -90,6 +91,38 @@ public class PageController {
     public String happy(){
 
         return "happy";
+    }
+
+
+    //-------------------------------------------------------------景点跳转
+    @GetMapping(value = "/luxian")
+    public String jiudian1() {
+
+        return "luxian";
+    }
+    //-------------------------------------------------------------景点详情跳转
+    @GetMapping(value = "/jihua")
+    public String jihua() {
+
+        return "jihua";
+    }
+    //-------------------------------------------------------------景点预订跳转
+    @GetMapping(value = "/yuding")
+    public String yuding() {
+
+        return "yuding";
+    }
+    //-------------------------------------------------------------景点加入购物车跳转
+    @GetMapping(value = "/yudingg")
+    public String yudingg() {
+
+        return "yudingg";
+    }
+    //-------------------------------------------------------------购物车查询跳转
+    @GetMapping(value = "/querygouwuche")
+    public String querygouwuche() {
+
+        return "querygouwuche";
     }
 
 }
