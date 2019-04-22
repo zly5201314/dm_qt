@@ -11,6 +11,8 @@ package com.jk.util;
 
 import com.jk.controller.ChBean;
 import com.jk.controller.HotelBean;
+import com.jk.controller.Tree;
+import com.jk.controller.User;
 import com.jk.service.UserService;
 import org.springframework.stereotype.Component;
 
@@ -36,6 +38,11 @@ public class SchedualServiceHiHystric implements UserService {
 
     @Override
     public List<HotelBean> queryHotelList() {
+        return null;
+    }
+
+    @Override
+    public List<HotelBean> querybeijing() {
         return null;
     }
 
@@ -72,5 +79,40 @@ public class SchedualServiceHiHystric implements UserService {
     @Override
     public void saveYu(ChBean chBean) {
 
+    }
+
+    @Override
+    public String login(String userNumber, String userPassword) {
+        return null;
+    }
+
+    @Override
+    public List<User> queryUserList() {
+        return null;
+    }
+
+    @Override
+    public String regStu(String userNumber, String userPassword) {
+        return null;
+    }
+
+    @Override
+    public List<Tree> getTree() {
+        return null;
+    }
+
+    @Override
+    public List<User> queryGuGong() {
+        return null;
+    }
+
+    @Override
+    public List<User> queryChangCheng() {
+        return null;
+    }
+
+    @Override
+    public List<User> queryHuanLeGe() {
+        return null;
     }
 }

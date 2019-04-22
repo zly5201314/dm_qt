@@ -3,6 +3,8 @@ package com.jk.service;
 
 import com.jk.controller.ChBean;
 import com.jk.controller.HotelBean;
+import com.jk.controller.Tree;
+import com.jk.controller.User;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -59,6 +61,34 @@ public interface UserServiceApi {
     //立即预订
     @PutMapping(value = "saveYu")
     void saveYu(ChBean chBean);
+
+
+    /*登录*/
+    @GetMapping("/login")
+    String login(@RequestParam("userNumber") String userNumber, @RequestParam("userPassword") String userPassword);
+
+
+    /*一日游页面*/
+    @GetMapping("/queryUserList")
+    List<User> queryUserList();
+
+
+    /*注册*/
+    @PostMapping("/regStu")
+    String regStu(@RequestParam("userNumber") String userNumber, @RequestParam("userPassword") String userPassword);
+
+    /*树页面*/
+    @GetMapping("/getTree")
+    List<Tree> getTree();
+    /*故宫页面*/
+    @GetMapping("/queryGuGong")
+    List<User> queryGuGong();
+    /*长城页面*/
+    @GetMapping("/queryChangCheng")
+    List<User> queryChangCheng();
+    /*欢乐谷页面*/
+    @GetMapping("/queryHuanLeGe")
+    List<User> queryHuanLeGe();
 
 
 }

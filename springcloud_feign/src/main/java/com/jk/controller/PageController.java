@@ -48,5 +48,49 @@ public class PageController {
     public String kefu(){
         return "kefu";
     }
+
+    /*登录*/
+    @RequestMapping("getLogin")
+    public String getLogin(){
+        System.out.println("getLogin");
+        return "login";
+    }
+    /*注册*/
+    @RequestMapping("getRegister")
+    public String getRegister(){
+
+        return "register";
+    }
+    /*一日游页面*/
+    @RequestMapping("get")
+    public String get(){
+
+        return "one";
+    }
+    /*树页面*/
+    @RequestMapping("aaa")
+    public String aaa(){
+
+        return "oneday";
+    }
+    /*故宫页面*/
+    @RequestMapping("gugong")
+    public String gugong(){
+
+        return "GuGong";
+    }
+    /*长城页面*/
+    @RequestMapping("changcheng")
+    public String changcheng(){
+
+        return "changcheng";
+    }
+    /*欢乐谷页面*/
+    @RequestMapping("happy")
+    public String happy(){
+
+        return "happy";
+    }
+
 }
 
