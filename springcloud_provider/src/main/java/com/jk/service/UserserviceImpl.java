@@ -5,6 +5,11 @@ import com.jk.controller.HotelBean;
 import com.jk.controller.Tree;
 import com.jk.controller.User;
 import com.jk.mapper.UserMapper;
+import com.jk.controller.BokeBean;
+import com.jk.controller.ChBean;
+import com.jk.controller.JinBean;
+import com.jk.controller.JiuBean;
+import com.jk.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +36,7 @@ public class UserserviceImpl{
 
     @GetMapping(value = "/hi")
     @ResponseBody
-    public String hiService(String name) {
+    public String hiService(String name)     {
         return "hi,"+name+",sorry,error!";
     }
 
@@ -205,5 +210,44 @@ public class UserserviceImpl{
     public List<User> queryHuanLeGe(){
         return usermapper.queryHuanLeGe();
     }
+
+    //查询博客
+    @GetMapping(value = "/boke/BokeList")
+    @ResponseBody
+    public List<BokeBean> BokeList(){
+        List<BokeBean> list=usermapper.BokeList();
+        System.out.println(list);
+        return list;
+    }
+
+    //查询首页
+    @GetMapping(value = "/Jin/JinList")
+    @ResponseBody
+    public List<JinBean> JinList(){
+        List<JinBean> list=usermapper.JinList();
+        System.out.println(list);
+        return list;
+    }
+
+
+    //查询首页酒店
+    @GetMapping("/jiu/JiuList")
+    @ResponseBody
+    public  List<JiuBean> JiuList(){
+        List<JiuBean> list=usermapper.JiuList();
+        System.out.println(list);
+        return list;
+    }
+
+
+
+    //景点条查
+    @GetMapping("/jin/tijiao")
+    @ResponseBody
+    public List<JinBean> tijiao(@RequestParam("jinName")String jinName){
+        List<JinBean> list=usermapper.tijiao(jinName);
+        return list;
+    };
+
 
 }

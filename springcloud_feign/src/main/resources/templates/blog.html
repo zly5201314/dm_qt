@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+
+    <!--== META TAGS ==-->
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700%7CMontserrat:400,700" rel="stylesheet">
+
+    <!-- FONT-AWESOME ICON CSS -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <!--== ALL CSS FILES ==-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/mob.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+	<script src="js/html5shiv.js"></script>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+
+
+
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">&nbsp;</div>
+    </div>
+
+    <!--====== TOP HEADER ==========-->
+    <section>
+        <div class="rows head" data-spy="affix" data-offset-top="120">
+            <div class="container">
+                <div>
+                    <!--====== BRANDING LOGO ==========-->
+                    <div class="col-md-4 col-sm-12 col-xs-12 head_left">
+                        <a href="index.html"><img src="images/logo.png" alt="" />
+                        </a>
+                    </div>
+                    <!--====== HELP LINE & EMAIL ID ==========-->
+                    <div class="col-md-8 col-sm-12 col-xs-12 head_right head_right_all">
+                        <ul>
+                            <li><a href="#">免费服务热线: 400-025-5588</a>
+                            </li>
+                            <li><a href="#">Email: contact@worldtours.com</a>
+                            </li>
+                            <li>
+                                <div class="dropdown">
+                                    <button class="dropbtn">我的账户</button>
+                                    <div class="dropdown-content">
+                                        <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> 登录</a>
+                                        <a href="#"><i class="fa fa-address-book-o" aria-hidden="true"></i> 注册我们</a>
+                                        <a href="#"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 我的预定</a>
+                                        <a href="#"><i class="fa fa-umbrella" aria-hidden="true"></i> 旅游套餐</a>
+                                        <a href="#"><i class="fa fa-bed" aria-hidden="true"></i> Hotel Bookings</a>
+                                        <a href="#"><i class="fa fa-ban" aria-hidden="true"></i> Cancel Bookings</a>
+                                        <a href="#"><i class="fa fa-print" aria-hidden="true"></i> Prient E-Tickets</a>
+                                        <a href="#" class="ho-dr-con-last"><i class="fa fa-align-justify" aria-hidden="true"></i> Custom Tour Plan</a>
+                                    </div>
+								</div>	
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!--====== NAVIGATION MENU ==========-->
+    <section>
+        <div class="rows main_menu">
+            <div class="container res-menu">
+                <nav class="navbar navbar-inverse">
+                    <div>
+                        <!-- Brand and toggle get grouped for better mobile display(MOBILE MENU) -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <img src="images/logo.png" alt="" class="mob_logo" />
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </section>
+    <!--====== BANNER ==========-->
+    <section>
+        <div class="rows inner_banner">
+            <div class="container">
+                <h2><span>最佳旅游 -</span> 您所在城市的活动</h2><ul><li><a href="#inner-page-title">旅游</a></li><li><i class="fa fa-angle-right" aria-hidden="true"></i> </li><li><a href="#inner-page-title" class="bread-acti">博客帖子</a></li></ul>
+                <p>预订旅行套餐，享受独特体验的假期</p>
+            </div>
+        </div>
+    </section>
+    <!--====== ALL POST ==========-->
+    <section>
+        <section>
+            <div class="rows inn-page-bg com-colo">
+                <div class="container inn-page-con-bg tb-space pad-bot-redu-5" id="inner-page-title">
+                    <!-- TITLE & DESCRIPTION -->
+                    <div class="spe-title col-md-12">
+                        <h2>假日旅游 <span>博客</span> 帖子</h2>
+                        <div class="title-line">
+                            <div class="tl-1"></div>
+                            <div class="tl-2"></div>
+                            <div class="tl-3"></div>
+                        </div>
+                        <p>世界领先的旅行和旅行预订网站，全球超过30,000个包裹。预订旅行套餐，享受独特体验的假期</p>
+                    </div>
+                    <!--===== POSTS ======-->
+                    <div class="rows" id="boke1">
+
+                    </div>
+                    <!--===== POST END ======-->
+                </div>
+            </div>
+        </section>
+
+        <!--========= Scripts ===========-->
+        <script src="js/jquery-latest.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+		<script src="js/wow.min.js"></script>
+		<script src="js/custom.js"></script>
+</body>
+<SCRIPT>
+    $(function(){
+        queryBokeList();
+    })
+    function queryBokeList(){
+        $.ajax({
+            url:'/boke/BokeList',
+            success:function(data){
+                var op="";
+                for(var i=0;i<data.length;i++){
+                    op+="<div class=\"posts\" ><div class=\"col-md-6 col-sm-6 col-xs-12\">\n" +
+                        " <img src="+data[i].bokeImg+" width='500px' height='500px' alt=\"\" />\n" +
+                        " </div>\n" +
+                        " <div class=\"col-md-6 col-sm-6 col-xs-12\">\n" +
+                        " <h3>"+data[i].bokeName+"</h3>\n" +
+                        " <h5><span class=\"post_author\">作者:"+data[i].bokeZuoZhe+"</span><span class=\"post_date\">日期:"+data[i].bokeTime+"</span><span class=\"post_city\"></span></h5>\n" +
+                        " <p>"+data[i].bokeXiang+"</p>\n" +
+                        "  <a href='queryJinById?id="+data[i].id+"' class=\"link-btn\" >查看更多</a>\n" +
+                        "    </div></div>"
+                }
+                $("#boke1").append(op);
+            }
+        })
+    }
+
+    function updatexiu(id){
+        alert("123")
+    }
+
+
+
+
+</SCRIPT>
+</html>
+

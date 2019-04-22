@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.jk.util.AlipayConfig;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alipay.api.AlipayClient;
@@ -100,6 +101,7 @@ public class AlipayController {
         } else {
             System.out.println("前往支付失败页面");
             mav.setViewName("hotel");
+            mav.setViewName("index");
         }
         return mav;
     }

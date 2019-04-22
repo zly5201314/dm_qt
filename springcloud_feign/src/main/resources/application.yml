@@ -1,22 +1,29 @@
 
+
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8090/eureka/
-server:
-  port: 8084
 
-feign:
-  hystrix:
-    enabled: true
 
 spring:
   application:
     name: service-feign
+ribbon:
+  eureka:
+    enabled: true
+
   thymeleaf:
     cache: false
     prefix: classpath:/templates/
     suffix: .html
+server:
+  port: 8084
+feign:
+  hystrix:
+    enabled: true
   data:
     solr:
       host: http://127.0.0.1:8080/solr
+
+

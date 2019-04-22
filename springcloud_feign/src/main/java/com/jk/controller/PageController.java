@@ -1,38 +1,39 @@
-/**
- * Copyright (C), 2019, 1809B
- * FileName: PageController
- * Author:   要艳娜
- * Date:     2019/04/17 17:22
- * History:
- * <author>          <time>          <version>          <desc>
- * 要艳娜           修改时间           版本号              描述
- */
+
 package com.jk.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-/**
- * 〈一句话功能简述〉<br> 
- * 〈a〉
- *
- * @author yao
- * @create 2019/04/17
- * @since 1.0.0
- */
 @Controller
 public class PageController {
+
 
     //跳转到酒店页面
     @RequestMapping("listHotel")
     public String listTicket(){
-
         return "hotel";
     }
 
+
+    @RequestMapping("jiudian")
+    public String jiudian(){
+         return "hotels-list";
+     }
+
+    @RequestMapping("shouye")
+    public String shouye(){
+        return "index";
+    }
+
+    //跳转博客页面
+    @RequestMapping("boke")
+    public String boke(){
+       return "blog";
+    }
+
     //跳转立即预约
-    @RequestMapping("xuyu")
+    @RequestMapping("page/xuyu")
     public String xuyu(){
         return "xuyu";
     }
@@ -44,7 +45,7 @@ public class PageController {
     }
 
     //联系客服
-    @RequestMapping("Kefu")
+    @RequestMapping("/page/Kefu")
     public String kefu(){
         return "kefu";
     }
@@ -70,7 +71,6 @@ public class PageController {
     /*树页面*/
     @RequestMapping("aaa")
     public String aaa(){
-
         return "oneday";
     }
     /*故宫页面*/
@@ -93,4 +93,5 @@ public class PageController {
     }
 
 }
+
 

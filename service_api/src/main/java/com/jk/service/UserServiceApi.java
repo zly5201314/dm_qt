@@ -1,5 +1,9 @@
 package com.jk.service;
 
+import com.jk.controller.BokeBean;
+import com.jk.controller.ChBean;
+import com.jk.controller.JinBean;
+import com.jk.controller.JiuBean;
 
 import com.jk.controller.ChBean;
 import com.jk.controller.HotelBean;
@@ -26,6 +30,31 @@ public interface UserServiceApi {
     @GetMapping(value = "/hi")
     String hiService(@RequestParam(value = "name") String name);
 
+
+    //查询博客
+    @GetMapping("/boke/BokeList")
+    List<BokeBean> BokeList();
+
+    //查询景点
+    @GetMapping("/Jin/JinList")
+    List<JinBean> JinList();
+
+    //查询首页酒店
+    @GetMapping("/jiu/JiuList")
+    List<JiuBean> JiuList();
+
+    @PostMapping("/chuan/findCh")
+    HashMap<String, Object> findCh(@RequestParam(value = "page") Integer page, @RequestParam(value = "rows") Integer rows, @RequestBody ChBean chBean);
+
+    @GetMapping("/jiu/findJiuById")
+    ChBean findJiuById(@RequestParam("shopId") Integer shopId);
+
+    @PutMapping("/yu/saveYu")
+    void saveYu(@RequestBody ChBean chBean);
+
+    @GetMapping("/jin/tijiao")
+    List<JinBean> tijiao(@RequestParam("jinName")String jinName);
+
     //查询酒店首页
     @GetMapping(value ="/queryHotelList")
     List<HotelBean> queryHotelList();
@@ -50,17 +79,7 @@ public interface UserServiceApi {
     @GetMapping(value = "queryhangzhou")
     List<HotelBean> queryhangzhou();
 
-    //查询房间
-    @PostMapping(value = "findCh")
-    HashMap<String, Object> findCh(@RequestParam(value = "page")Integer page,  @RequestParam(value = "rows") Integer rows,  @RequestBody ChBean chBean);
 
-    //预订房间
-    @GetMapping(value="findJiuById")
-    ChBean findJiuById(@RequestParam("shopId")Integer shopId);
-
-    //立即预订
-    @PutMapping(value = "saveYu")
-    void saveYu(ChBean chBean);
 
 
     /*登录*/

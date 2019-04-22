@@ -1,24 +1,9 @@
-/**
- * Copyright (C), 2019, 1809B
- * FileName: ChBean
- * Author:   要艳娜
- * Date:     2019/04/21 15:53
- * History:
- * <author>          <time>          <version>          <desc>
- * 要艳娜           修改时间           版本号              描述
- */
+
 package com.jk.controller;
 
 import java.io.Serializable;
 
-/**
- * 〈一句话功能简述〉<br> 
- * @ClassName ChBean
- * @Description TODO
- * @Author 要艳娜
- * @Date 2019/04/21 15:53
- * @Version 1.0
- */
+
 public class ChBean implements Serializable {
 
     private static final long serialVersionUID = -2417629677497780734L;
@@ -44,6 +29,17 @@ public class ChBean implements Serializable {
     private String fImg;
 
     private Integer yu;
+
+
+
+    public Integer getYu() {
+        return yu;
+    }
+
+    public void setYu(Integer yu) {
+        this.yu = yu;
+    }
+
 
     public Integer getId() {
         return id;
@@ -123,14 +119,6 @@ public class ChBean implements Serializable {
 
     public void setfImg(String fImg) {
         this.fImg = fImg;
-    }
-
-    public Integer getYu() {
-        return yu;
-    }
-
-    public void setYu(Integer yu) {
-        this.yu = yu;
     }
 
     @Override

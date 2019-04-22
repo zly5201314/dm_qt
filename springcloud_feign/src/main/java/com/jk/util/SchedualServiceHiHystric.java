@@ -13,10 +13,15 @@ import com.jk.controller.ChBean;
 import com.jk.controller.HotelBean;
 import com.jk.controller.Tree;
 import com.jk.controller.User;
+import com.jk.controller.BokeBean;
+import com.jk.controller.ChBean;
+import com.jk.controller.JinBean;
+import com.jk.controller.JiuBean;
 import com.jk.service.UserService;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashMap;
 import java.util.List;
 
@@ -35,6 +40,31 @@ public class SchedualServiceHiHystric implements UserService {
     public String hiService(String name) {
         return "报错";
     }
+
+    @Override
+    public List<BokeBean> BokeList() {
+        return null;
+    }
+
+    @Override
+    public List<JinBean> JinList() {
+        return null;
+    }
+
+    @Override
+    public List<JiuBean> JiuList() {
+        return null;
+    }
+
+
+
+
+
+    @Override
+    public List<JinBean> tijiao(String jinName) {
+        return null;
+    }
+
 
     @Override
     public List<HotelBean> queryHotelList() {
