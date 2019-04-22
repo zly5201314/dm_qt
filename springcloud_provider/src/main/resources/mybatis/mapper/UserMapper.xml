@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jk.mapper.UserMapper">
+
+    <!--房间总条数-->
+   <select id="queryChCount" resultType="int" parameterType="com.jk.controller.ChBean">
+       select count(1) from  zly_chbean
+   </select>
+    <!--房间查询搜索-->
+    <select id="queryChList" resultType="com.jk.controller.ChBean" >
+        select * from zly_chbean  LIMIT #{start},#{rows}
+    </select>
+
+    <update id="saveYu" parameterType="com.jk.controller.ChBean">
+      UPDATE zly_chbean set yu=1 where id=#{id}
+    </update>
+
+
+</mapper>

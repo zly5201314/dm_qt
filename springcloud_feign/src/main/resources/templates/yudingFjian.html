@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .myrow{
+            margin-bottom:10px
+        }
+    </style>
+</head>
+<body>
+<form id="myForm">
+    <input type="hidden" name="id" id="id">
+    <div class="container-fluid">
+        <div class="row myrow">
+            <div class="col-md-4">
+                <label for="fName">房间信息</label>
+            </div>
+            <div class="col-md-8">
+                <input type="text" readonly class="form-control" id="fName" name="fName">
+            </div>
+        </div>
+        <div class="row myrow">
+            <div class="col-md-2">
+                <label for="price">入离时间</label>
+            </div>
+            <div class="col-md-8">
+                <a id="price"></a>------明天12:00之前
+            </div>
+        </div>
+        <div class="row myrow">
+            <div class="col-md-4">
+                <label for="fJshui">剩余房间数量</label>
+            </div>
+            <div class="col-md-8">
+                <input type="text" readonly class="form-control" id="fJshui" name="fJshui">
+            </div>
+        </div>
+        <div class="row myrow">
+            <div class="col-md-4">
+                <label for="fJshui">最多每间</label>
+            </div>
+            <div class="col-md-8">
+               <input type="text" readonly class="form-control" id="renShu" name="renShu">
+            </div>
+        </div>
+        <div class="row myrow">
+            <div class="col-md-4">
+                <label for="fPrice">房费情况</label>
+            </div>
+            <div class="col-md-8">
+                <input type="text" readonly class="form-control" id="fPrice" name="fPrice">
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+<script>
+    $(function(){
+        CurentTime();
+        $('.date').datetimepicker({
+            language: 'zh-CN',//显示中文
+            //format: 'yyyy-mm-dd hh:ii:ss',//显示格式
+            //format: 'yyyy-mm-dd',//显示格式
+            minView: "month",//设置只显示到月份
+            initialDate: new Date(),//初始化当前日期
+            autoclose: true,//选中自动关闭
+            todayBtn: true//显示今日按钮
+        });
+    })
+
+
+    function CurentTime()
+    {
+        var now = new Date();
+
+        var year = now.getFullYear();       //年
+        var month = now.getMonth() + 1;     //月
+        var day = now.getDate();            //日
+
+        var hh = now.getHours();            //时
+        var mm = now.getMinutes();          //分
+        var ss = now.getSeconds();           //秒
+
+        var clock = year + "-";
+
+        if(month < 10)
+            clock += "0";
+
+        clock += month + "-";
+
+        if(day < 10)
+            clock += "0";
+
+        clock += day + " ";
+
+        if(hh < 10)
+            clock += "0";
+
+        clock += hh + ":";
+        if (mm < 10) clock += '0';
+        clock += mm + ":";
+
+        if (ss < 10) clock += '0';
+        clock += ss;
+        $("#price").html(clock)
+    }
+</script>
+</html>

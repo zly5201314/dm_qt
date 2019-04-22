@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../js/easyui1.5/themes/icon.css">
+    <link rel="stylesheet" href="../js/easyui1.5/themes/default/easyui.css">
+    <link rel="stylesheet" href="../js/uploadify/uploadify.css">
+    <link rel="stylesheet" href="../js/kindeditor-4.1.10/themes/default/default.css">
+    <script type="text/javascript" src="../js/easyui1.5/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/easyui1.5/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../js/easyui1.5/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="../js/uploadify/jquery.uploadify.js"></script>
+    <script type="text/javascript" src="../js/kindeditor-4.1.10/kindeditor-all.js"></script>
+    <style type="text/css">
+        .sendConent{
+            text-align:right
+        }
+        .sendSpan{
+            background-color: green;
+            color: white;
+            font-size: 24px;
+            padding: 2px 8px;
+            border-radius: 8px;
+        }
+        .sendIcon{
+            color: green;
+            margin-left: -3px;
+        }
+        .receiveSpan{
+            background-color: blue;
+            color: white;
+            font-size: 24px;
+            padding: 2px 8px;
+            border-radius: 8px;
+        }
+        .receiveIcon{
+            color: blue;
+            margin-right: -3px;
+        }
+    </style>
+</head>
+<body>
+<a id="shou" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">返回首页</a>
+<div class="easyui-layout"data-options="fit:true" >
+    <div data-options="title:'会话框',region:'center'"id='middle' class='c1'>
+    </div>
+    <div data-options="title:'输入框',region:'south'"style="height:130px">
+        <input id='text'  style= "background-color:transparent;border:0;width:1145px; height:99px;">
+    </div>
+</div>
+</body>
+<script>
+
+    $("#text").bind('keyup', function(event){
+        if(event.keyCode == '13'){
+            var value=this.value;
+            var sendMsg = '<p class="sendConent">'+
+                '<span class="sendSpan">'+value+'</span>'+
+                '<span class="sendIcon">▶</span>'+
+                '<img src="/images/f1.png" width="80px"height="80px"></p>';
+            $("#middle").append(sendMsg);
+            $("#text").val("");
+            $("#middle").scrollTop($("#middle")[0].scrollHeight);
+            $.ajax({
+                url:'/ren/ren',
+                data:{msg:value},
+                async:false,
+                type:"post",
+                success:function(data){
+                    var revMsg = '<p class="receiveConent"><img src="/images/hotels/4.jpg" width="80px"height="80px">'+
+                        '<span class="receiveIcon">◀</span>'+
+                        '<span class="receiveSpan">'+data+'</span>'+
+                        '</p>';
+                    $("#middle").append(revMsg);
+                    $("#middle").scrollTop($("#middle")[0].scrollHeight);
+                }
+            })
+        }
+    });
+
+
+    $("#shou").click(function () {
+        location.href="/shouye";
+    })
+
+</script>
+</html>

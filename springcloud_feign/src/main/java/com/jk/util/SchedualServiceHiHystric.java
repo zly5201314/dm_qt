@@ -9,10 +9,13 @@
  */
 package com.jk.util;
 
+import com.jk.controller.ChBean;
+import com.jk.controller.HotelBean;
 import com.jk.service.UserService;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -29,5 +32,45 @@ public class SchedualServiceHiHystric implements UserService {
 
     public String hiService(String name) {
         return "报错";
+    }
+
+    @Override
+    public List<HotelBean> queryHotelList() {
+        return null;
+    }
+
+    @Override
+    public List<HotelBean> queryTianJin() {
+        return null;
+    }
+
+    @Override
+    public List<HotelBean> queryshanghai() {
+        return null;
+    }
+
+    @Override
+    public List<HotelBean> querychongqing() {
+        return null;
+    }
+
+    @Override
+    public List<HotelBean> queryhangzhou() {
+        return null;
+    }
+
+    @Override
+    public HashMap<String, Object> findCh(Integer page, Integer rows, ChBean chBean) {
+        return null;
+    }
+
+    @Override
+    public ChBean findJiuById(Integer shopId) {
+        return null;
+    }
+
+    @Override
+    public void saveYu(ChBean chBean) {
+
     }
 }

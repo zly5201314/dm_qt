@@ -1,7 +1,10 @@
 package com.jk.service;
 
+
 import com.jk.util.SchedualServiceHiHystric;
 import org.springframework.cloud.openfeign.FeignClient;
+
+import java.util.HashMap;
 
 /**
  * <pre>项目名称：dm_springcloud
@@ -16,6 +19,5 @@ import org.springframework.cloud.openfeign.FeignClient;
  */
 @FeignClient(value = "SERVICE-PROVIDER",fallback = SchedualServiceHiHystric.class)
 public interface UserService extends UserServiceApi{
-
 
 }
