@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jk.mapper.UserMapper">
+
+
+   <!--查询景点信息 -->
+
+  <select id="queryBeiJing"  resultType="com.jk.controller.BeiJineBean">
+      select t.id,t.areaid,t.beijingimg,t.daystripid,t.price,t.projectname,t.startAreaid,t.theme,a.areaname areaname,n.name startAreaname,d.numberdayname daystrname,z.name themename  from t_beijing t
+left join t_area a on t.areaid = a.areaid
+left join t_name n on t.startAreaid =n.nameid
+left join t_numberday d on t.daystripid =d.numberdayid
+left join t_zhuti z on t.theme =z.id
+
+   </select>
+
+
+    <!--查询景点详细信息 -->
+    <select id="findUserById" parameterType="int" resultType="com.jk.controller.BeiJineBean">
+         select t.tuijian,t.id,t.areaid,t.beijingimg,t.daystripid,t.price,t.projectname,t.startAreaid,t.theme,a.areaname areaname,n.name startAreaname,d.numberdayname daystrname,z.name themename  from t_beijing t
+            left join t_area a on t.areaid = a.areaid
+            left join t_name n on t.startAreaid =n.nameid
+            left join t_numberday d on t.daystripid =d.numberdayid
+            left join t_zhuti z on t.theme =z.id
+            where t.id = #{value}
+   </select>
+    <!--删除-->
+    <delete id="delGouWu" parameterType="int">
+        delete from t_gouwuche where id= #{value}
+    </delete>
+
+    <!--查询景点信息-->
+   <select id="queryZhuTi" resultType="com.jk.controller.ZhuTiBean">
+      select * from t_zhuti
+
+   </select>
+    <!--新增购物车-->
+    <insert id="saveUser" parameterType="com.jk.controller.YuFuBean">
+        insert into t_gouwuche(projectnamee,projectnameee,projectname,yname,yphone,ynumber,price,birth) values(#{projectnameee},#{projectnamee},#{projectname},#{yname},#{yphone},#{ynumber},#{price},#{birth})
+   </insert>
+
+</mapper>

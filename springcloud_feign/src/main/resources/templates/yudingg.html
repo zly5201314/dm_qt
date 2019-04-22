@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <link type="text/css" rel="stylesheet" href="../js/bootstrap3/css/bootstrap.css"></link>
+    <link type="text/css" rel="stylesheet" href="../js/bootstrap-table/bootstrap-table.css"></link>
+    <link type="text/css" rel="stylesheet" href="../js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css"></link>
+    <link type="text/css" rel="stylesheet" href="../js/bootstrap-fileinput/css/fileinput.css"></link>
+    <link href="../js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <!-- FONT-AWESOME ICON CSS -->
+    <link rel="stylesheet" href="./mb/css/font-awesome.min.css">
+
+
+    <script src="../js/bootstrap3/js/bootstrap.js"></script>
+    <script src="../js/bootstrap-bootbox/bootbox.js"></script>
+    <script src="../js/bootstrap-table/bootstrap-table.js"></script>
+    <script src="../js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../js/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="../js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../js/bootstrap-fileinput/js/fileinput.js"></script>
+    <script src="../js/bootstrap-fileinput/js/locales/zh.js"></script>
+    <script src="../js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+</head>
+<body onload="loads();">
+
+
+<div class="container-fluid">
+    <form id="userForm">
+
+        <div class="form-group" style="background:url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555770825683&di=582c4384d508661853c605edc61fde5d&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20171123%2Ff843a58b27f64109809214949938b8c2.jpeg') no-repeat; margin-left: 0; margin-top: 0">
+            <div class="row">
+
+                <div class="col-md-2">
+                    <label >套餐:</label>
+                </div>
+                <div class="col-md-4" >
+                    <select class='form-control'  id="taocan"  ></select>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="yname">您的姓名:</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="yname" name="yname"/>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="yphone">您的电话:</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" id="yphone" name="yphone"/>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-md-2">
+                    <label >人数:</label>
+                </div>
+                <div class="col-md-4" >
+                    <input type="button" onclick="jian()" style='font-size:18px'  value="-" />
+                    <input type=text name="ynumber" id="stock" style="height:34px; font-size:15px;" size=5 baiduSug=1 value="1">
+                    <input type="button" onclick="jia()" style='font-size:18px' value="+">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <label >单价:</label>
+                </div>
+                <div class="col-md-4" id="jiage">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <label >旅行日期:</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control date" id="birth"  name="birth"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!--------------------------------------------------------------------套餐下拉触发事件---------------------------------------------------->
+<script type="text/JavaScript">
+
+    var selectId = document.getElementById("taocan");//获取ID
+    selectId.onchange = function(){
+        var id = this.options[this.options.selectedIndex].value;//获取选中文本
+
+        $.ajax({
+
+            url:'../openUpdate',
+            type:'get',
+            data:{id:id},
+            async:false,
+            dataType:'json',
+            success:function(data){
+                $("#jiage").empty();
+                var jg="";
+                jg="<input type='text' class='form-control' id='pricee' name='price'  value='"+data.price+"'/>" +
+                    "<input type='hidden' class='form-control' id='pric' name='projectname'  value='"+data.projectname+"'/>" +
+                    "<input type='hidden' class='form-control' id='pricc' name='projectnamee'  value='"+data.startAreaname+"'/>" +
+                    "<input type='hidden' class='form-control' id='priccc' name='projectnameee'  value='"+data.beijingimg+"'/>" +
+
+                    "<input type='hidden' class='form-control' id='price'   value='"+data.price+"'/>"
+
+                $("#jiage").append(jg);
+            }
+        })
+    }
+    //--------------------------------------------------------------------------加号按钮
+    function jia(){
+        var stock=$("#stock").val();
+        var price=$("#price").val();
+
+        stock=Number(stock)+1;
+        $("#stock").val(stock);
+
+        document.getElementById("pricee").value=(price*stock);
+    }
+    //---------------------------------------------------------------------------减号按钮
+    function jian(){
+        var stock=$("#stock").val();
+        var price=$("#price").val();
+        if(stock>0){
+            stock=Number(stock)-1;
+            $("#stock").val(stock);
+
+            document.getElementById("price").value=(price*stock);
+        }
+
+        //
+    }
+
+</script>
+
+<script type="text/javascript">
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+</script>
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">删除</button>
+
+
+
+</body>
+
+<script type="text/javascript">
+    $(function(){
+        queryluxian();//具体路线方案查询
+    })
+    //-------------------------------------------------------------------->时间框
+    $('.date').datetimepicker({
+        language: 'zh-CN',//显示中文
+        format: 'yyyy-mm-dd',//显示格式
+        minView: "month",//设置只显示到月份
+        initialDate: new Date(),//初始化当前日期
+        autoclose: true,//选中自动关闭
+        todayBtn: true//显示今日按钮
+    });
+
+    //---------------------------------------------------------------具体路线下拉框 查询
+    function queryluxian(){
+        $.ajax({
+            url:'../queryBeiJing',
+            type:'get',
+            data:{},
+            async:false,
+            dataType:'json',
+            success:function(data){
+                var bj="<option value=''>--请选择套餐--</option>";
+                var projectname="";
+                for(var i=0;i<data.length;i++){
+                    bj+= "<option  value='"+data[i].id+"'>"+data[i].projectname+"</option>"
+                    projectname="<input type='text' class='form-control' id='pricee' name='price'  value='"+data.projectname+"'/>";
+                }
+
+                $("#taocan").append(bj);
+            }
+        })
+    }
+
+
+
+</script>
+
+</html>
