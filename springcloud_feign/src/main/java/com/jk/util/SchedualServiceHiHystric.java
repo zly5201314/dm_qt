@@ -9,10 +9,10 @@
  */
 package com.jk.util;
 
+import com.jk.model.*;
 import com.jk.service.UserService;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,5 +29,35 @@ public class SchedualServiceHiHystric implements UserService {
 
     public String hiService(String name) {
         return "报错";
+    }
+
+    @Override
+    public List<JingBean> queryTuPian() {
+        return null;
+    }
+
+    @Override
+    public List<ZhuTiBean> queryZhuTi() {
+        return null;
+    }
+
+    @Override
+    public List<ShiJianBean> queryShiJian() {
+        return null;
+    }
+
+    @Override
+    public List<MuDiBean> queryMuDi() {
+        return null;
+    }
+
+    @Override
+    public List<XiangBean> queryJing(Integer jingId) {
+        return null;
+    }
+
+    @Override
+    public List<BeiBean> queryBeiJing() {
+        return null;
     }
 }
