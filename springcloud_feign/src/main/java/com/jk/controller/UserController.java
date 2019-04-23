@@ -64,10 +64,7 @@ public class UserController {
     private SolrClient client;
 
 
-    @GetMapping(value = "/shouye")
-    public String shouye() {
-        return "shouye";
-    }
+
 
 
 
@@ -187,13 +184,6 @@ public class UserController {
     }
 
 
-    //查询房间
-    @GetMapping("/chuan/findCh")
-    public HashMap<String,Object> findCh(Integer page,Integer rows,ChBean chBean){
-        HashMap<String, Object> hashMap =userservice.findCh(page,rows,chBean);
-        System.out.println(hashMap);
-        return hashMap;
-    }
 
     //预订房间
     @RequestMapping("/jiu/findJiuById")
@@ -463,7 +453,7 @@ public class UserController {
     @ResponseBody
     public BeiJineBean findUserBy(@RequestParam("id") Integer id){
         BeiJineBean beiJingTrees = userservice.findUserById(id);
-
+        System.out.println(beiJingTrees);
         return beiJingTrees;
     }
     //--------------------------------------------------------------删除购物

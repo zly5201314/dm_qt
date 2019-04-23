@@ -79,7 +79,6 @@ public interface UserMapper {
 
     /*登录*/
     @Select("SELECT * FROM user_lmd u WHERE u.userNumber = #{userNumber}")
-    @GetMapping("login")
     User login(String userNumber);
 
     /*注册*/

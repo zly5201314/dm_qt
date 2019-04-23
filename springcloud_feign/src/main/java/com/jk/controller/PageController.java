@@ -54,7 +54,6 @@ public class PageController {
     /*登录*/
     @RequestMapping("getLogin")
     public String getLogin(){
-        System.out.println("getLogin");
         return "login";
     }
     /*注册*/

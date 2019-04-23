@@ -43,9 +43,8 @@
     function  initShopTable(){
         $('#myTable').bootstrapTable({
             toolbar:'#toolbar',
-            url:'/findCh',
+            url:'/chuan/findCh',
             //toolbar:'#toolbar',
-            url:"/chuan/findCh",
             pagination:true, //是否展示分页
             pageList:[2, 4, 10, 50],//分页组件
             pageNumber:1,
@@ -129,11 +128,7 @@
         });
         //回显数据
         $.ajax({
-<<<<<<< HEAD
-            url:'/findJiuById',
-=======
             url:'/jiu/findJiuById',
->>>>>>> remotes/origin/ly
             type:'post',
             data:{shopId:id},
             success:function(data){

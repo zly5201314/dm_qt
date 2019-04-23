@@ -90,20 +90,20 @@ public class HotelController {
 
 
     //查询房间
-    @GetMapping(value = "/findCh")
+   @GetMapping(value = "/chuan/findCh")
     public HashMap<String,Object> findCh(Integer page,Integer rows,ChBean chBean){
         HashMap<String, Object> hashMap =userservice.findCh(page,rows,chBean);
         System.out.println(hashMap);
-        return hashMap;
+       return hashMap;
     }
 
-    //预订房间
+  /*  //预订房间
     @RequestMapping(value = "/findJiuById")
     public ChBean findJiuById(Integer shopId){
         ChBean chBean=userservice.findJiuById(shopId);
         System.out.println(chBean);
         return chBean;
-    }
+    }*/
 
     //立即预订
     @RequestMapping(value = "/saveYu")

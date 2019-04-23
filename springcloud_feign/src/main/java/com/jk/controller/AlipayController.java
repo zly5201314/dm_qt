@@ -100,9 +100,7 @@ public class AlipayController {
             mav.setViewName("index");
         } else {
             System.out.println("前往支付失败页面");
-            mav.setViewName("hotel");
             mav.setViewName("index");
-            mav.setViewName("luxian");
         }
         return mav;
     }
@@ -150,6 +148,39 @@ public class AlipayController {
         return "user/zhifu";
     }
 
+
+
+    @RequestMapping("/pay2")
+    public void pay2(HttpServletRequest request, HttpServletResponse response,YuFuBean money) throws Exception {
+        // 模拟从前台传来的数据
+        /*String orderNo =(String)((Math.random()*9+1)*1000000000);*/
+        String orderNo = new Date()+"123"; // 生成订单号// 生成订单号
+        System.out.println("生成订单号"+orderNo);
+        Integer totalAmount = money.getPrice(); // 支付总金额
+        String subject = money.getYname(); // 订单名称
+        System.out.println("订单名称"+subject);
+        String body = money.getProjectname(); // 旅游描述
+        // 封装请求客户端
+        AlipayClient client = new DefaultAlipayClient(url, app_id, private_key, format, charset, public_key, signtype);
+        // 支付请求
+        AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
+        alipayRequest.setReturnUrl(return_url);
+        alipayRequest.setNotifyUrl(notify_url);
+        AlipayTradePayModel model = new AlipayTradePayModel();
+        model.setProductCode("FAST_INSTANT_TRADE_PAY"); // 设置销售产品码
+        model.setOutTradeNo(orderNo); // 设置订单号
+        model.setSubject(subject); // 订单名称
+        model.setTotalAmount(String.valueOf(totalAmount)); // 支付总金额
+        model.setBody(body); // 设置商品描述
+        alipayRequest.setBizModel(model);
+
+        String form = client.pageExecute(alipayRequest).getBody(); // 生成表单
+
+        response.setContentType("text/html;charset=" + charset);
+        response.getWriter().write(form); // 直接将完整的表单html输出到页面
+        response.getWriter().flush();
+        response.getWriter().close();
+    }
 
 
 

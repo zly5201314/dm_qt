@@ -218,7 +218,9 @@
                                 size: "small",
                                 title: "提示",
                                 message: "删除成功!",
-                                callback: function(){}
+                                callback: function(){
+                                    queryluxian();
+                                }
                             })
                             $("#userTable").bootstrapTable('refresh');
                         }

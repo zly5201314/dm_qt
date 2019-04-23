@@ -100,7 +100,7 @@ public class UserserviceImpl{
     }
 
     //查询酒店房间
-    @PostMapping(value = "/findCh")
+    @PostMapping(value = "/chuan/findCh")
     @ResponseBody
     public HashMap<String,Object> findCh(@RequestParam(value = "page") Integer page, @RequestParam(value = "rows") Integer rows, @RequestBody ChBean chBean){
         HashMap<String, Object> hashMap = new HashMap<>();
@@ -114,7 +114,7 @@ public class UserserviceImpl{
 
 
     //预订房间
-    @GetMapping(value = "/findJiuById")
+    @GetMapping(value = "/jiu/findJiuById")
     @ResponseBody
     public  ChBean findJiuById(@RequestParam("shopId") Integer shopId){
         ChBean chBean=usermapper.findJiuById(shopId);
@@ -304,8 +304,9 @@ public class UserserviceImpl{
     @GetMapping(value = "findUserById")
     @ResponseBody
     public BeiJineBean findUserById(@RequestParam("id")Integer id) {
-
-        return usermapper.findUserById(id);
+        BeiJineBean userById = usermapper.findUserById(id);
+        System.out.println(userById);
+        return userById;
     }
 
     @PostMapping("saveUser")

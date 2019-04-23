@@ -51,9 +51,12 @@ public interface UserServiceApi {
     @GetMapping(value = "queryBeiJing")
     @ResponseBody
     List<BeiJineBean> queryBeiJing();
+
     @GetMapping(value = "findUserById")
     @ResponseBody
     BeiJineBean findUserById(@RequestParam("id")Integer id);
+
+    
     @PostMapping(value = "saveUser")
     @ResponseBody
     void saveUser(@RequestBody YuFuBean userBean);

@@ -115,11 +115,11 @@
                     <!-- NAVIGATION MENU -->
                     <div class="collapse navbar-collapse" id="myNavbar">
                         <ul class="nav navbar-nav">
-                            <li><a href="index.html">首页</a></li>
-                            <li><a href="family-package.html">自由行定制</a></li>
-                            <li><a href="hotels-list.html">线程旅行</a>
+                            <li><a href="shuye">首页</a></li>
+                            <li><a href="luxian">自由行定制</a></li>
+                            <li><a href="get">线程旅行</a>
                             <li><a href="blog.html">当地玩乐</a></li>
-                            <li><a href="places.html">酒店</a></li>
+                            <li><a href="listHotel">酒店</a></li>
                             <li><a href="boke">博客</a></li>
                             <li><a href="/page/Kefu">联系客服</a></li>
                         </ul>
@@ -278,8 +278,7 @@
     function loads(){
         var id=window.localStorage.getItem("id");
         $.ajax({
-
-            url:'../openUpdate',
+            url:'./openUpdate',
             type:'get',
             data:{id:id},
             async:false,
@@ -325,7 +324,7 @@
                     "className" : "btn-sm btn-success",
                     "callback" : function() {
                         var aa=  $("#userForm").serialize()
-                        location.href="pay?YuFuBean="+aa;
+                        location.href="pay2?YuFuBean="+aa;
                         /*  $.ajax({
                               url:'../pay',
                               type:'post',
@@ -360,7 +359,7 @@
                     "className" : "btn-sm btn-success",
                     "callback" : function() {
                         $.ajax({
-                            url:'../saveUser',
+                            url:'./saveUser',
                             type:'post',
                             contentType: "application/json",
                             data:JSON.stringify({
